@@ -6,9 +6,8 @@ class Client extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        email: Sequelize.STRING,
-        password: Sequelize.VIRTUAL,
-        password_hash: Sequelize.STRING,
+        mail: Sequelize.STRING,
+        password: Sequelize.STRING,
       },
       {
         sequelize,

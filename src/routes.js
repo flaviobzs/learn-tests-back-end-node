@@ -9,7 +9,7 @@ routes.get('/', (req, res) => res.json({ message: 'Hello tests' }));
 
 routes.post('/users', UserController.store);
 
-routes.get('/client', ClientController.index);
-routes.post('/client', ClientController.store);
+routes.get('/clients', ClientController.index);
+routes.post('/clients', ClientController.store);
 
 export default routes;

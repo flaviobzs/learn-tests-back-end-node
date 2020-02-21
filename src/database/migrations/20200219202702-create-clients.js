@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('clients', {
@@ -9,16 +7,16 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      name:{
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      mail:{
+      mail: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
-      password:{
+      password: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -27,5 +25,5 @@ module.exports = {
 
   down: queryInterface => {
     return queryInterface.dropTable('clients');
-  }
+  },
 };
