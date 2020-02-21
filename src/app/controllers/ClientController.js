@@ -10,6 +10,28 @@ class ClientController {
   }
 
   async store(req, res) {
+    // validação de nome
+    if (!req.name) {
+      return res.status(400).error('Name is obrigatory');
+    }
+    if (!req.mail) {
+      return res.status(400).error('Mail is obrigatory');
+    }
+
+    if (!req.password) {
+      return res.status(400).error('Password is obrigatory');
+    }
+
+    const { email } = req.body;
+
+    const checkEmail = await Client.findOne({ where: { email } });
+
+    if (checkEmail) {
+      return res
+        .status(400)
+        .json({ error: 'Duplicated email, user already exists.' });
+    }
+
     const client = await Client.create(req.body);
 
     // res.status(201).json(req.body);
