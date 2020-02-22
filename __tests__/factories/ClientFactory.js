@@ -1,9 +1,9 @@
 import faker from 'faker';
 import { factory } from 'factory-girl';
 
-import Client from '../../src/app/models/Client';
+import User from '../../src/app/models/User';
 
-factory.define('Client', Client, {
+factory.define('User', User, {
   name: faker.name.findName(),
   mail: faker.internet.email(),
   password: faker.internet.password(),

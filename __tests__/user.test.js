@@ -4,7 +4,7 @@ import app from '../src/app';
 import factory from './factories/ClientFactory';
 
 test('Should list all users', async () => {
-  const response = await request(app).get('/clients');
+  const response = await request(app).get('/users');
 
   // expect(response.body).toHaveLength(1);
   // expect(response.body[0]).toHaveProperty('name', 'John Doe');
@@ -14,13 +14,11 @@ test('Should list all users', async () => {
 });
 
 test('Should create a new user', async () => {
-  // const client = await factory.attrs('Client');
+  const user = await factory.attrs('User');
 
   const response = await request(app)
-    .post('/clients')
-    .send({
-      name: 'Jode',
-    });
+    .post('/users')
+    .send(user);
 
   expect(response.status).toBe(201);
   // expect(response.body.name).toBe('John Doe');
@@ -28,10 +26,10 @@ test('Should create a new user', async () => {
 
 test('Should not create a new user without atribute name', async () => {
   const response = await request(app)
-    .post('/clients')
+    .post('/users')
     .send({
-      mail: 'john@gmail.com',
-      password: '123456',
+      mail: 'johcvn@gmail.com',
+      password: '123xcv456',
     });
 
   expect(response.status).toBe(400);
@@ -40,10 +38,10 @@ test('Should not create a new user without atribute name', async () => {
 
 test('Should not create a new user without atribute mail', async () => {
   const response = await request(app)
-    .post('/clients')
+    .post('/users')
     .send({
-      name: 'john',
-      password: '123456',
+      name: 'johvcxn',
+      password: '123xcv456',
     });
 
   expect(response.status).toBe(400);
@@ -52,10 +50,10 @@ test('Should not create a new user without atribute mail', async () => {
 
 test('Should not create a new user without atribute password', async () => {
   const response = await request(app)
-    .post('/clients')
+    .post('/users')
     .send({
       name: 'john',
-      mail: 'john@gmail.com',
+      mail: 'johxcvcvxcn@gmail.com',
     });
 
   expect(response.status).toBe(400);
@@ -67,7 +65,7 @@ test('should not be able to register with duplicated email', async () => {
     .post('/users')
     .send({
       name: 'Flávio',
-      email: 'bzsflavio@gmail.com',
+      mail: 'bzsflaaavio@gmail.com',
       password: '123456',
     });
 
@@ -75,7 +73,7 @@ test('should not be able to register with duplicated email', async () => {
     .post('/users')
     .send({
       name: 'Flávio',
-      email: 'bzsflavio@gmail.com',
+      mail: 'bzsflaaavio@gmail.com',
       password: '123456',
     });
 

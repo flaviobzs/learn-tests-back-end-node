@@ -11,22 +11,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
+      mail: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
-      password_hash: {
+      password: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      created_at: {
-        type: Sequelize.DATE,
-        allowNull: true, // trocar para falso
-      },
-      updated_at: {
-        type: Sequelize.DATE,
-        allowNull: true, // trocar para falso
       },
     });
   },

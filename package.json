@@ -19,7 +19,8 @@
     "express-async-errors": "^3.1.1",
     "pg": "^7.18.1",
     "sequelize": "^5.21.4",
-    "youch": "^2.0.10"
+    "youch": "^2.0.10",
+    "yup": "^0.28.1"
   },
   "devDependencies": {
     "@sucrase/jest-plugin": "^2.0.0",

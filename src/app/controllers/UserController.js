@@ -1,10 +1,32 @@
 import User from '../models/User';
 
 class UserController {
-  async store(req, res) {
-    const { email } = req.body;
+  async index(req, res) {
+    // const users = [{ name: 'John Doe', mail: 'john@mail.com' }];
+    const users = await User.findAll();
 
-    const checkEmail = await User.findOne({ where: { email } });
+    return res.status(200).json(users);
+  }
+
+  async store(req, res) {
+    console.log(req.body);
+
+    const { mail, password, name } = req.body;
+
+    // validação de nome
+    if (!name) {
+      return res.status(400).json({ error: 'Name is obrigatory' });
+    }
+
+    if (!mail) {
+      return res.status(400).json({ error: 'Mail is obrigatory' });
+    }
+
+    if (!password) {
+      return res.status(400).json({ error: 'Password is obrigatory' });
+    }
+
+    const checkEmail = await User.findOne({ where: { mail } });
 
     if (checkEmail) {
       return res
@@ -12,9 +34,14 @@ class UserController {
         .json({ error: 'Duplicated email, user already exists.' });
     }
 
-    const user = await User.create(req.body);
+    const user = await User.create({
+      name,
+      mail,
+      password,
+    });
 
-    return res.json(user);
+    // res.status(201).json(req.body);
+    return res.status(201).json(user);
   }
 }
 
