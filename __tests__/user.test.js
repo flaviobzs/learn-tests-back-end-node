@@ -1,7 +1,7 @@
 import request from 'supertest';
 import app from '../src/app';
 
-import factory from './factories/ClientFactory';
+import factory from './factories/UserFactory';
 
 test('Should list all users', async () => {
   const response = await request(app).get('/users');

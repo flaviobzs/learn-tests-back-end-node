@@ -9,8 +9,6 @@ class UserController {
   }
 
   async store(req, res) {
-    console.log(req.body);
-
     const { mail, password, name } = req.body;
 
     // validação de nome
