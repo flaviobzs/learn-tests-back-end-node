@@ -39,6 +39,8 @@ test('Should not create a new account without atribute name', async () => {
   expect(response.body.error).toBe('Name is obrigatory');
 });
 
+test.skip('Should not create a new user with atribute name duplicaded', async () => {});
+
 test('Should list accounts', async () => {
   const account = await factoryAccount.attrs('Account', {
     user_id: 2,
@@ -53,6 +55,8 @@ test('Should list accounts', async () => {
   expect(response.status).toBe(200);
   expect(response.status).toBeGreaterThan(0);
 });
+
+test.skip('Should only list user accounts', async () => {});
 
 test('Should show account with id', async () => {
   const account = await factoryAccount.attrs('Account', {
@@ -75,6 +79,8 @@ test('Should show account with id', async () => {
   expect(response.body.user_id).toBe(2);
 });
 
+test.skip('Should not show account with id another user', async () => {});
+
 test('Should edit one account with id', async () => {
   const account = await factoryAccount.attrs('Account', {
     name: 'CT19',
@@ -95,6 +101,8 @@ test('Should edit one account with id', async () => {
   expect(response.body.name).toBe('CX19');
   expect(response.body.user_id).toBe(2);
 });
+
+test.skip('Should not update account with id another user', async () => {});
 
 test('Should delete a existenct account', async () => {
   const account = await factoryAccount.attrs('Account', {
@@ -117,3 +125,5 @@ test('Should delete a existenct account', async () => {
   expect(get.status).toBe(200);
   expect(get.body).toBe(null);
 });
+
+test.skip('Should not delete account with id another user', async () => {});
