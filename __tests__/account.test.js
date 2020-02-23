@@ -68,8 +68,6 @@ test('Should show account with id', async () => {
     .post('/accounts')
     .send(account);
 
-  console.log(response_account.body);
-
   const response = await request(app).get(
     `/accounts/${response_account.body.id}`
   );
